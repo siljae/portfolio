@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드래그 앤 드롭 파일 업로드 페이지</title>
+	<style>
+		.drop-zone {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			border: 2px dashed gray;
+			width: 500px;
+			height: 300px;
+			margin: 50px auto;
+			font-size: 24px;
+		}
+		.drop-zone .text {
+			margin-top: 10px;
+			color: gray;
+		}
+	</style>
+</head>
+<body>
+	<div class="drop-zone" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+		<span class="text">여기에 파일을 드래그 앤 드롭하세요.</span>
+	</div>
+	<script>
+		function handleDragOver(event) {
+			event.preventDefault();
+			event.dataTransfer.dropEffect = "copy";
+		}
+
+		function handleDrop(event) {
+			event.preventDefault();
+			const files = event.dataTransfer.files;
+			const xhr = new XMLHttpRequest();
+			const formData = new FormData();
+
+			for (let i = 0; i < files.length; i++) {
+				formData.append('file[]', files[i]);
+			}
+
+			xhr.open('POST', '{% url 'upload_files' %}');
+			xhr.onload = function () {
+				if (xhr.status === 200) {
+					window.location.href = '{% url 'upload_success' %}';
+				}
+			};
+			xhr.send(formData);
+		}
+	</script>
+</body>
+</html>

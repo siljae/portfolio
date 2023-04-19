@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/signup.css">
+    
+    <script>        
+        function selectAll(selectAll){
+            const checkboxes = document.getElementsByName('agree');
+            checkboxes.forEach((checkbox) =>{checkbox.checked = selectAll.checked;} )
+        }
+        function checkselectAll()  {
+            // 전체 체크박스
+            const checkboxes 
+                = document.querySelectorAll('input[name="agree"]');
+            // 선택된 체크박스
+            const checked 
+                = document.querySelectorAll('input[name="agree"]:checked');
+            // select all 체크박스
+            const selectAll 
+                = document.querySelector('input[name="allagree"]');
+            
+            if(checkboxes.length === checked.length)  {
+                selectAll.checked = true;
+            }else {
+                selectAll.checked = false;
+            }
+        }
+
+        function chkForm(){
+    		const pw = document.getElementById('pw').value;
+    		const pw2 = document.getElementById('pw2').value;
+    		if(pw == pw2){
+    			const ischk = document.getElementById('allagree').checked; 
+    			if(ischk == true){
+    				return true;
+    			}
+    			else{
+                    alert("약관에 동의해주세요!")
+    				return false;
+                }
+    		}
+    		else{
+                alert("비밀번호가 일치하지 않습니다!");
+    			return false;
+    		}
+    	}
+    </script>
+    <title>회원가입</title>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="header">
+                <h1>회원가입</h1>
+                <div class="hr1"></div>
+            </div>
+            <form action="#" onsubmit="return chkForm()">
+                <div class="input_box">
+                    <p>
+                        이메일
+                        <input type="email" name="email" class="email"  required>
+                        <button onclick="email_check()" class="email_check">중복확인</button>
+                    </p>
+                    <br>
+                    <p>
+                        비밀번호
+                        <input type="password" id="pw" name="pw" class="pw" required placeholder="ex)비밀번호양식">
+                    </p>
+                    <br>
+                    <p>
+                        비밀번호확인
+                        <input type="password" id="pw2" class="pw2" required>
+                    </p>
+                    <br>
+                    <p>
+                        닉네임
+                        <input type="text" name="name" class="name" required>                    
+                        <button onclick="name_check()" class="name_check">중복확인</button>
+                    </p>
+                    <br>
+                    <p>
+                        전화번호
+                        <input type="text" id="num1" class="num1" value="010" size="1" readonly>
+                        <span>-</span>
+                        <input type="text" id="num2" class="num2" maxlength="4" pattern="[0-9]{4}" size="4" title="'1234와 같은 4자리 숫자'" required>                        
+                        <span>-</span>
+                        <input type="text" id="num3" class="num3" pattern="[0-9]{4}" size="4" title="'1234와 같은 4자리 숫자'" maxlength="4" required>
+                    </p>
+                    <br>
+                    <p>
+                        주소
+                        <input type="text" id="addr1" class="addr1">
+                        <button onclick="" class="postbox" name="post">우편번호</button>
+                    </p>
+                    <p>
+                        <input type="text" id="addr2" class="addr2" size="30">
+                    </p>
+                    <p>
+                        <input type="text" id="addr3" class="addr3" size="30" placeholder="상세주소">
+                    </p>
+                </div>
+                <div class="sub_header">
+                    <h3>약관동의</h3>
+                    <div class="hr2"></div>
+                </div>
+                <div class="agreebox">
+                    <div class="allagree_box">
+                        <label for="allagree">회원가입 약관에 모두 동의합니다</label>  
+                        <input type="checkbox" id="allagree" name="allagree" class="allagree_input" onclick="selectAll(this)">              
+                    </div>
+                    <div class="hr3"></div>
+                    <div class="a_agree_box">
+                        <label for="a_agree"><a href="#">이용약관 동의<span class="a_as">[필수]</span></a></label>
+                        <input type="checkbox"  id="a_agree" name="agree" class="a_agree_input" onclick="checkselectAll()">                        
+                    </div>
+                    <textarea name="agreebox" class="agreebox"  cols="58" rows="5" readonly>나중에 이용약관 넣을 것
+                    </textarea>
+                    <br>
+                    <div class="b_agree_box">
+                        <label for="b_agree"><a href="#">개인정보 수집 및 이용 동의<span class="b_as">[필수]</span></a></label>
+                        <input type="checkbox"  id="b_agree" name="agree" class="b_agree_input" onclick="checkselectAll()" >
+                    </div>
+                    <textarea name="agreebox" class="agreebox"  cols="58" rows="5" readonly>나중에 개인정보 수집 및 이용 동의 넣을 것
+                    </textarea>
+                    <br>
+                    <div class="sign_submit">
+                        <input type="submit" value="가입하기">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+</body>
+</html>

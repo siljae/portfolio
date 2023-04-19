@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>index</title>
+    <script type="text/javascript">
+        //배너 슬라이드
+        $(document).ready(function () {
+            $(".slide_banner").not(".active").hide(); //화면 로딩 후 첫번째 div를 제외한 나머지 숨김            
+            setInterval(nextbannerSlide, 10000); //10초(10000)마다 다음 슬라이드로 넘어감
+        });
+        
+        //이전 슬라이드
+        function prevbannerSlide() {
+            $(".slide_banner").hide(); //모든 div 숨김
+            let allSlide = $(".slide_banner"); //모든 div 객체를 변수에 저장
+            let currentIndex = 0; //현재 나타난 슬라이드의 인덱스 변수
+            
+            //반복문으로 현재 active클래스를 가진 div를 찾아 index 저장
+            $(".slide_banner").each(function(index,item){ 
+                if($(this).hasClass("active")) {
+                    currentIndex = index;
+                }
+                
+            });
+            
+            //새롭게 나타낼 div의 index
+            let newIndex = 0;
+            
+            if(currentIndex <= 0) {
+                //현재 슬라이드의 index가 0인 경우 마지막 슬라이드로 보냄(무한반복)
+                newIndex = allSlide.length-1;
+            } else {
+                //현재 슬라이드의 index에서 한 칸 만큼 뒤로 간 index 지정
+                newIndex = currentIndex-1;
+            }
+        
+            //모든 div에서 active 클래스 제거
+            $(".slide_banner").removeClass("active");
+            
+            //새롭게 지정한 index번째 슬라이드에 active 클래스 부여 후 show()
+            $(".slide_banner").eq(newIndex).addClass("active");
+            $(".slide_banner").eq(newIndex).show();
+        
+        }
+        
+        //다음 슬라이드
+        function nextbannerSlide() {
+            $(".slide_banner").hide();
+            let allSlide = $(".slide_banner");
+            let currentIndex = 0;
+            
+            $(".slide_banner").each(function(index,item){
+                if($(this).hasClass("active")) {
+                    currentIndex = index;
+                }
+                
+            });
+            
+            let newIndex = 0;
+            
+            if(currentIndex >= allSlide.length-1) {
+                //현재 슬라이드 index가 마지막 순서면 0번째로 보냄(무한반복)
+                newIndex = 0;
+            } else {
+                //현재 슬라이드의 index에서 한 칸 만큼 앞으로 간 index 지정
+                newIndex = currentIndex+1;
+            }
+        
+            $(".slide_banner").removeClass("active");
+            $(".slide_banner").eq(newIndex).addClass("active");
+            $(".slide_banner").eq(newIndex).show();
+        }
+
+        //SHOP 슬라이드
+        $(document).ready(function () {
+            $(".slide_shop").not(".active").hide(); //화면 로딩 후 첫번째 div를 제외한 나머지 숨김            
+            setInterval(nextshopSlide, 10000); //10초(10000)마다 다음 슬라이드로 넘어감
+        });
+        
+        //이전 슬라이드
+        function prevshopSlide() {
+            $(".slide_shop").hide(); //모든 div 숨김
+            let allSlide = $(".slide_shop"); //모든 div 객체를 변수에 저장
+            let currentIndex = 0; //현재 나타난 슬라이드의 인덱스 변수
+            
+            //반복문으로 현재 active클래스를 가진 div를 찾아 index 저장
+            $(".slide_shop").each(function(index,item){ 
+                if($(this).hasClass("active")) {
+                    currentIndex = index;
+                }
+                
+            });
+            
+            //새롭게 나타낼 div의 index
+            let newIndex = 0;
+            
+            if(currentIndex <= 0) {
+                //현재 슬라이드의 index가 0인 경우 마지막 슬라이드로 보냄(무한반복)
+                newIndex = allSlide.length-1;
+            } else {
+                //현재 슬라이드의 index에서 한 칸 만큼 뒤로 간 index 지정
+                newIndex = currentIndex-1;
+            }
+        
+            //모든 div에서 active 클래스 제거
+            $(".slide_shop").removeClass("active");
+            
+            //새롭게 지정한 index번째 슬라이드에 active 클래스 부여 후 show()
+            $(".slide_shop").eq(newIndex).addClass("active");
+            $(".slide_shop").eq(newIndex).show();
+        
+        }
+        
+        //다음 슬라이드
+        function nextshopSlide() {
+            $(".slide_shop").hide();
+            let allSlide = $(".slide_shop");
+            let currentIndex = 0;
+            
+            $(".slide_shop").each(function(index,item){
+                if($(this).hasClass("active")) {
+                    currentIndex = index;
+                }
+                
+            });
+            
+            let newIndex = 0;
+            
+            if(currentIndex >= allSlide.length-1) {
+                //현재 슬라이드 index가 마지막 순서면 0번째로 보냄(무한반복)
+                newIndex = 0;
+            } else {
+                //현재 슬라이드의 index에서 한 칸 만큼 앞으로 간 index 지정
+                newIndex = currentIndex+1;
+            }
+        
+            $(".slide_shop").removeClass("active");
+            $(".slide_shop").eq(newIndex).addClass("active");
+            $(".slide_shop").eq(newIndex).show();
+        }
+    </script>
+</head>
+<body>
+    <!-- 슬라이드 배너 -->
+    <section id="slidebanner">
+        <div class="slidebox">
+            <div class="slide_banner fade active">
+                <img src="../img/index/slide01.jpg" alt="">
+            </div>
+            <div class="slide_banner fade">
+                <img src="../img/index/slide02.jpg" alt="">
+            </div>
+            <div class="slide_banner fade">
+                <img src="../img/index/slide03_1.jpg" alt="">
+            </div>
+
+            <a class="prev" onclick="prevbannerSlide()">&#10094;</a>
+            <a class="next" onclick="nextbannerSlide()">&#10095;</a>
+        </div>
+    </section>
+    <!-- 바로가기 아이콘 -->
+    <section id="shortcut">
+        <div class="container">
+            <h1>바로가기</h1>
+            <ul class="linkbox">
+                <li class="linkimgbox">
+                    <a href="#">
+                        <img class="linkimg" src="../img/index/commuicon.png" alt="커뮤니티">
+                        <span class="linkspan">우리아이자랑</span>
+                    </a>
+                </li>
+                <li class="linkimgbox">
+                    <a href="#">
+                        <img class="linkimg" src="../img/index/noticeicon.png" alt="공지사항">
+                        <span class="linkspan">공지사항</span>
+                    </a>
+                </li>
+                <li class="linkimgbox">
+                    <a href="#">
+                        <img class="linkimg" src="../img/index/hosicon.png" alt="병원">
+                        <span class="linkspan">우리동네병원</span>
+                    </a>
+                </li>
+                <li class="linkimgbox">
+                    <a href="#">
+                        <img class="linkimg" src="../img/index/shopicon.png" alt="마켓">
+                        <span class="linkspan">SHOP</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- 글 상자 -->
+    <!-- 공지사항 -->
+    <section id="textbox">
+        <div class="container noticebox">
+            <h1>
+                공지사항
+                <span>중요사항을 알려드립니다</span>
+                <a href="#">더보기 ></a>
+            </h1>
+            <ul>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>작성자</h3>
+                        <a href="#">이건 공지사항 글입니다</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>작성자</h3>
+                        <a href="#">이건 공지사항 글입니다</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>작성자</h3>
+                        <a href="#">이건 공지사항 글입니다</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>작성자</h3>
+                        <a href="#">이건 공지사항 글입니다</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- 인기글 -->
+    <section id="textbox">
+        <div class="container noticebox">
+            <h1>
+                인기글
+                <span>최고의 게시글을 확인하시죠</span>
+                <a href="#">더보기 ></a>
+            </h1>
+            <ul>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>호롱이맘</h3>
+                        <a href="#">호롱이 ㄱㅇㅇ</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>친칠라</h3>
+                        <a href="#">난 친칠라가 좋아</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>댕댕이</h3>
+                        <a href="#">우리 애는 물어요</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>작성자</h3>
+                        <a href="#">이건 공지사항 글입니다</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- 병원 후기 -->
+    <section id="textbox">
+        <div class="container noticebox">
+            <h1>
+                우리동네병원 후기
+                <span>소중한 병원 후기</span>
+                <a href="#">더보기 ></a>
+            </h1>
+            <ul>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>시월이맘</h3>
+                        <a href="#">이 병원 가지마세요</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>댕댕이</h3>
+                        <a href="#">우리 애 땅콩 뗀 날</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>작성자</h3>
+                        <a href="#">이건 공지사항 글입니다</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box">
+                        <a href="#">
+                            <img src="../img/index/testimg.png" alt="">
+                        </a>
+                    </div>
+                    <div class="txt">
+                        <h3>작성자</h3>
+                        <a href="#">이건 공지사항 글입니다</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- shop 광고 -->
+    <section id="slideshop">
+        <div class="slidebox">
+            <div class="slide_shop fade active">
+                <img src="../img/index/ad1.png" alt="">
+            </div>
+            <div class="slide_shop fade">
+                <img src="../img/index/ad2.png" alt="">
+            </div>
+            <div class="slide_shop fade">
+                <img src="../img/index/ad3.png" alt="">
+            </div>
+            <div class="slide_shop fade">
+                <img src="../img/index/ad4.png" alt="">
+            </div>
+            <div class="slide_shop fade">
+                <img src="../img/index/ad5.png" alt="">
+            </div>
+
+            <a class="slideprev" onclick="prevshopSlide()">&#10094;</a>
+            <a class="slidenext" onclick="nextshopSlide()">&#10095;</a>
+        </div>
+    </section>
+    <!-- 하단 -->
+    <footer>
+        <div class="container">
+            <div class="footerbox">
+                <div class="footertxt">
+                    <p>CDC © Copylight 2023, All Rights Reserved</p>
+                    <p>경상남도 창원시 마산합포구 양덕동 15-27 KR 번지 경민인터빌 407호 </p>
+                    <p>반려동물커뮤니티</p>
+                    <p>책임자 : 김서현, 이영석</p>
+                    <p>문의 : 055-716-1771, itedunet.com</p>
+                </div>
+                <div>
+                    <a href="#">이용약관</a>
+                    <a href="#">개인정보활용</a>
+                </div>                
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

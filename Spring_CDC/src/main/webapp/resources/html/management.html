@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/management.css">
+    <title>회원관리</title>
+    <script >
+        function updatemember(num){
+            //팝업창 띄우고 해당 팝업창에 num을 넘겨서
+            //num을 가지고 팝업창에서 회원정보를 띄우고
+            //form태그 안에서 해당 회원의 정보를 수정하면
+            //DB에서 회원의 정보가 수정되는 형식
+            //바꾸면 회원페이지를 새로 출력해줘야됨
+            // window.open("updatemember/"+num,'_blank','width=600,height=800,top=200,left=200');            
+            window.open("managementdetail.html",'_blank','width=600,height=800,top=200,left=200');
+        }
+
+        function deletemember(num){
+            let i = confirm("정말 삭제하시겠습니까?\n삭제한 회원은 복원하실 수 없습니다.");
+
+            if(i == true){
+                location.href = "삭제할 매핑경로"+num
+            }
+            //이게 일어나면 새로 출력해줘야됨
+        }
+    </script>
+</head>
+<body>
+    <section>
+        <div class="cart_head">
+            <h1>마이페이지</h1>
+        </div>
+        <div class="container">
+            <div class="mypagebox">
+                <ul class="my_left">
+                    <li class="my_left_li1">
+                        <h2><a href="./MyPage.html">MyPage</a></h2>
+                    </li>
+                    <li class="my_left_li2">
+                        <a href="./MyPageveri.html">
+                            <label for="msb1">
+                                <span>개인정보수정</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </label>
+                        </a>
+                    </li>
+                    <li class="my_left_li3">
+                        <a href="./MyPageorder.html">
+                            <label for="msb2">
+                                <span>주문목록</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </label>
+                        </a>
+                    </li>
+                    <li class="my_left_li4">
+                        <a href="./MyPagecart.html">
+                            <label for="msb3">
+                                <span>장바구니</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </label>
+                        </a>
+                    </li>
+                    <li class="my_left_li5">                            
+                        <a href="./MyPagechat.html">
+                            <label for="msb4">
+                                <span>1:1 채팅창</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </label>
+                        </a>
+                    </li>
+                </ul>
+                <div class="my_right">
+                    <h2>회원관리</h2>
+                    <table class="my_table">
+                        <tr class="title">
+                            <td>번호</td>
+                            <td>이메일</td>
+                            <td>닉네임</td>
+                            <td>연락처</td>
+                            <td>우편번호</td>
+                            <td>주소</td>
+                            <td>상세주소</td>
+                            <td>등급</td>
+                            <td>수정</td>
+                            <td>삭제</td>
+                        </tr>
+                        <tr>
+                            <td id="num">1</td>
+                            <td id="email">2</td>
+                            <td id="name">3</td>
+                            <td id="phone">4</td>
+                            <td id="post">5</td>
+                            <td id="addr1">6</td>
+                            <td id="addr2">7</td>
+                            <td id="grade">8</td>
+                            <td><button id="update" onclick="updatemember(this)">수정</button></td>
+                            <td><button id="delete" onclick="deletemember(this)">삭제</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
