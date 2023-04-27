@@ -80,7 +80,7 @@
 <img src="https://img.shields.io/badge/카카오%20지도%20API-FFCD00?style=flat-square&logo=KAKAO&logoColor=black" style="height : auto; margin-left : 10px; margin-right : 10px;"/></a>&nbsp;
 
 
-##ETC
+## ETC
 - email : brojunes@naver.com
 
 
